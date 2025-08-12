@@ -113,7 +113,7 @@ class CalendlyAvailabilityScheduleView(View):
 class RegisterView(CreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    permission_classes = [AllowAny]
+    # permission_classes = [AllowAny]
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
@@ -130,7 +130,7 @@ class RegisterView(CreateAPIView):
 
 class LoginView(GenericAPIView):
     serializer_class = LoginSerializer
-    permission_classes = [AllowAny]
+    # permission_classes = [AllowAny]
 
     def post(self, request):
         serializer = self.get_serializer(data=request.data)
@@ -153,26 +153,26 @@ class LoginView(GenericAPIView):
 class CategoryListCreateAPIView(generics.ListCreateAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
 
 class CategoryRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
 
 class PositionListCreateAPIView(generics.ListCreateAPIView):
     queryset = Position.objects.filter(is_active=True)
     serializer_class = PositionSerializer
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
 
 class PositionRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Position.objects.filter(is_active=True)
     serializer_class = PositionSerializer
     lookup_field = 'kpi_postion_id'
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
     def perform_destroy(self, instance):
         instance.is_active = False
@@ -182,14 +182,14 @@ class PositionRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView
 class EmployeesListCreateAPIView(generics.ListCreateAPIView):
     queryset = Employee.objects.filter(is_available=True)
     serializer_class = EmployeeSerializer
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
 
 class EmployeesRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Employee.objects.filter(is_available=True)
     serializer_class = EmployeeSerializer
     lookup_field = 'employee_kpi_id'
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
     def perform_destroy(self, instance):
         instance.is_available = False
@@ -199,37 +199,37 @@ class EmployeesRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIVie
 class ServicesListCreateAPIView(generics.ListCreateAPIView):
     queryset = Service.objects.all()
     serializer_class = ServiceSerializer
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
 
 class ServicesRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Service.objects.all()
     serializer_class = ServiceSerializer
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
 
 class WorkingHoursListCreateView(generics.ListCreateAPIView):
     queryset = WorkingHours.objects.all()
     serializer_class = WorkingHoursSerializer
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
 
 class WorkingHoursDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = WorkingHours.objects.all()
     serializer_class = WorkingHoursSerializer
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
 
 class AppointmentListCreateView(generics.ListCreateAPIView):
     queryset = Appointment.objects.filter(is_available=True)
     serializer_class = AppointmentSerializer
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
 
 class AppointmentDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Appointment.objects.filter(is_available=True)
     serializer_class = AppointmentSerializer
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
     def perform_destroy(self, instance):
         instance.is_available = False
